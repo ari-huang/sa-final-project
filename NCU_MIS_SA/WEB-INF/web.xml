@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<web-app>
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>ncu.im3069.demo.controller.MemberController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>/api/member.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Student</servlet-name>
+		<servlet-class>ncu.im3069.demo.controller.StudentController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Student</servlet-name>
+		<url-pattern>/api/Student.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Teacher</servlet-name>
+		<servlet-class>ncu.im3069.demo.controller.TeacherController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Teacher</servlet-name>
+		<url-pattern>/api/Teacher.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Manager</servlet-name>
+		<servlet-class>ncu.im3069.demo.controller.ManagerController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Manager</servlet-name>
+		<url-pattern>/api/Manager.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<servlet-name>answer</servlet-name>
+		<servlet-class>ncu.im3069.demo.controller.AnswerController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>answer</servlet-name>
+		<url-pattern>/api/Answer.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>question</servlet-name>
+		<servlet-class>ncu.im3069.demo.controller.QuestionController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>question</servlet-name>
+		<url-pattern>/api/question.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+    <servlet-name>message</servlet-name>
+    <servlet-class>ncu.im3069.demo.controller.MessageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>message</servlet-name>
+    <url-pattern>/api/message.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>course</servlet-name>
+    <servlet-class>ncu.im3069.demo.controller.CourseController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>course</servlet-name>
+    <url-pattern>/api/course.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <servlet-name>QAArea</servlet-name>
+    <servlet-class>ncu.im3069.demo.controller.QAAreaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QAArea</servlet-name>
+    <url-pattern>/api/QAArea.do</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>video</servlet-name>
+    <servlet-class>ncu.im3069.demo.controller.VideoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>video</servlet-name>
+    <url-pattern>/api/video.do</url-pattern>
+  </servlet-mapping>
+</web-app>
