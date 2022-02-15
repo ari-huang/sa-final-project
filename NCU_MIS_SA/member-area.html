@@ -1,0 +1,529 @@
+<!-- 
+修正內容:
+登入後每個人進來看到的畫面不同了
+js修正
+
+將修改會員資料的連結寫進js中(html也有改)
+
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author"
+	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Jekyll v3.8.5">
+
+<title>會員專區 ｜ NCU MIS SA</title>
+
+<!-- Bootstrap core CSS -->
+<link href="statics/css/bootstrap.min.css" rel="stylesheet">
+<link href="statics/css/font-awesome.min.css" rel="stylesheet">
+<link href="statics/icon/neco.ico" type="image/x-icon" rel="icon">
+<link href="statics/icon/neco.ico" type="image/x-icon"
+	rel="shortcut icon">
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+<!-- Custom styles for this template -->
+<link href="statics/css/product.css" rel="stylesheet">
+<link href="statics/css/jquery-confirm.css" rel="stylesheet">
+<link href="statics/css/frontpage.css" rel="stylesheet">
+
+<script src="statics/js/jquery-3.4.1.min.js"></script>
+<script src="statics/js/jquery-confirm.js"></script>
+<script src="statics/js/big.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500&display=swap"
+	rel="stylesheet">
+</head>
+
+<hbody>
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 border-bottom shadow-sm"
+		style="background-color: #faf0f0">
+		<h5 class="my-0 mr-md-auto font-weight-normal" id="logo">
+			<a href="frontbage.html" class="logo">泱泱學習網</a>
+		</h5>
+		<!--mr-md-auto 靠左浮動-->
+		<!-- Search Form  -->
+		<div id="search-wrapper">
+			<form action="#">
+				<input type="text" id="search" placeholder="Search something...">
+				<div id="close-icon"></div>
+				<input class="d-none" type="submit" value="">
+			</form>
+		</div>
+
+
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="frontpage.html" id="linkbt">登出</a>
+			<a class=" p-2 text-dark" href="member-area.html">會員專區</a>
+		</nav>
+		<a class="btn btn-outline-primary" href="cart.html">購物車</a>
+	</div>
+
+
+<div class="section-flex" style="background-color: #FFFFFF;">
+	<div class="section-block"
+		style="background-color: #FDDDE2; border-radius: 10px; border: 0px">
+		<!--<div class="d-grid gap-2 mx-auto">-->
+		<br> <br> <br>
+		<div id="member_name"></div>
+
+		<button id="memberdata" class="btn btn-link btn-lg" type="button"
+			style="margin-left: 10%; margin-right: 10%;">
+			<a style="text-decoration: none">修改會員資料</a>
+		</button>
+
+		<a style="text-decoration: none" href="order.html">
+			<button id="order" class="btn btn-dark btn-lg " type="button"
+				style="margin-right: 10%; width: 200px; height: 80px; background-color:#FE7187; border: 0px">訂單列表</button>
+		</a> <a style="text-decoration: none" href="class.html">
+			<button id="class" class="btn btn-dark btn-lg" type="button"
+				style="margin-right: 10%; width: 200px; height: 80px; background-color:#FE7187; border: 0px">觀看課程</button>
+		</a>
+	</div>
+</div>
+
+<div class="album py-5 bg-light">
+	<div class="container">
+		<div id="product_panel" class="row"></div>
+	</div>
+</div>
+
+<style>
+/* Search bar */
+#search-wrapper {
+	display: inline-block;
+	position: relative;
+	right: 7px;
+	margin-left: 50px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	#search-wrapper {
+		margin-left: 15px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	#search-wrapper {
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#search-wrapper {
+		margin-left: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	#search-wrapper {
+		margin-top: 15px;
+		padding-left: 1em;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#search-wrapper {
+		margin-top: 15px;
+		padding-left: 1em;
+	}
+}
+
+#search-wrapper.search-expanded #close-icon:before {
+	-webkit-animation: cross-1-in 0.25s linear 0s forwards;
+	animation: cross-1-in 0.25s linear 0s forwards;
+}
+
+#search-wrapper.search-expanded #close-icon:after {
+	-webkit-animation: cross-2-in 0.25s linear 0.2s forwards;
+	animation: cross-2-in 0.25s linear 0.2s forwards;
+}
+
+#search-wrapper.search-expanded:after {
+	-webkit-animation: lens-out 0.5s linear 1 forwards;
+	animation: lens-out 0.5s linear 1 forwards;
+}
+
+#search-wrapper:after {
+	position: absolute;
+	bottom: 3px;
+	right: -9px;
+	display: block;
+	content: "";
+	width: 14px;
+	height: 2px;
+	background-color: #000000;
+	-webkit-transform: rotate(45deg) scaleX(0);
+	transform: rotate(45deg) scaleX(0);
+	transform-origin: 0 50%;
+	-webkit-animation: lens-in 0.6s linear 0.9s forwards;
+	animation: lens-in 0.6s linear 0.9s forwards;
+}
+
+#search-wrapper #search {
+	background: none;
+	border: 2px solid;
+	border-color: #000000;
+	outline: none;
+	padding: 0 9px;
+	border-radius: 1000px;
+	width: 0;
+	transition: all 0.3s 0.6s;
+	font-size: 12px;
+}
+
+#search-wrapper #search::-webkit-input-placeholder {
+	color: rgba(0, 0, 0, 0.6);
+}
+
+#search-wrapper #search:focus {
+	width: 270px;
+	padding: 7px 15px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	#search-wrapper #search:focus {
+		width: 170px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#search-wrapper #search:focus {
+		width: 200px;
+	}
+}
+
+#search-wrapper #close-icon {
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	width: 20px;
+	height: 20px;
+	-webkit-transform: translateY(-1px);
+	transform: translateY(-1px);
+	transition: 0.2s all;
+	display: none;
+}
+
+#search-wrapper #close-icon[style*="display: block"] {
+	color: red;
+}
+
+#search-wrapper #close-icon[style*="display: block"]:before {
+	-webkit-transform: rotate(45deg) scaleX(1) translateY(10px);
+	transform: rotate(45deg) scaleX(1) translateY(10px);
+}
+
+#search-wrapper #close-icon[style*="display: block"]:after {
+	-webkit-transform: rotate(-45deg) scaleX(1) translateY(-10px);
+	transform: rotate(-45deg) scaleX(1) translateY(-10px);
+}
+
+#search-wrapper #close-icon:before, #search-wrapper #close-icon:after {
+	display: block;
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 2px;
+	background-color: #878787;
+	transform-origin: 100% 50%;
+}
+
+#search-wrapper #close-icon:before {
+	-webkit-transform: rotate(45deg) scaleX(0) translateY(10px);
+	transform: rotate(45deg) scaleX(0) translateY(10px);
+}
+
+#search-wrapper #close-icon:after {
+	-webkit-transform: rotate(-45deg) scaleX(0) translateY(-10px);
+	transform: rotate(-45deg) scaleX(0) translateY(-10px);
+}
+
+#search-wrapper #close-icon.closing:before {
+	-webkit-animation: cross-1-out 0.25s linear 0s forwards;
+	animation: cross-1-out 0.25s linear 0s forwards;
+}
+
+#search-wrapper #close-icon.closing:after {
+	-webkit-animation: cross-2-out 0.25s linear 0.2s forwards;
+	animation: cross-2-out 0.25s linear 0.2s forwards;
+}
+
+/*hover menu的動作*/
+ul {
+	/* 取消ul預設的內縮及樣式 */
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.drop-down-menu {
+	border: #ABDAE0 1px solid;
+	display: inline-block;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 13px;
+}
+
+ul.drop-down-menu li {
+	position: relative;
+	white-space: nowrap;
+	border-right: #ABDAE0 1px solid;
+}
+
+ul.drop-down-menu>li:last-child {
+	border-right: none;
+}
+
+ul.drop-down-menu>li {
+	float: left;
+	/* 只有第一層是靠左對齊*/
+}
+
+ul.drop-down-menu a {
+	background-color: #ABDAE0;
+	color: #333;
+	display: block;
+	padding: 0 30px;
+	text-decoration: none;
+	line-height: 40px;
+}
+
+ul.drop-down-menu a:hover {
+	/* 滑鼠滑入按鈕變色*/
+	background-color: #DDF1F2;
+	color: black;
+}
+
+ul.drop-down-menu li:hover>a {
+	/* 滑鼠移入次選單上層按鈕保持變色*/
+	background-color: #DDF1F2;
+	color: black;
+}
+
+ul.drop-down-menu ul {
+	border: #ABDAE0 1px solid;
+	position: absolute;
+	z-index: 99;
+	left: -1px;
+	top: 100%;
+	min-width: 180px;
+}
+
+ul.drop-down-menu ul li {
+	border-bottom: #ABDAE0 1px solid;
+}
+
+ul.drop-down-menu ul li:last-child {
+	border-bottom: none;
+}
+
+ul.drop-down-menu ul ul {
+	/*第三層以後的選單出現位置與第二層不同*/
+	z-index: 999;
+	top: 10px;
+	left: 90%;
+}
+
+ul.drop-down-menu ul {
+	/*隱藏次選單*/
+	display: none;
+}
+
+ul.drop-down-menu li:hover>ul {
+	/* 滑鼠滑入展開次選單*/
+	display: block;
+}
+
+/* 登入註冊彈出視窗*/
+#fade {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity = 80);
+}
+
+#light {
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 50%;
+	padding: 16px;
+	border: 3px solid orange;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
+
+input[type=text] {
+	width: 300px;
+	display: block;
+	margin-bottom: 6px;
+	/*background-color:;*/
+	color: gray;
+}
+
+input[type=button] {
+	width: 300px;
+	display: block;
+	/*margin-left: 40px;*/
+	background-color: black;
+	color: yellow;
+}
+
+/* 水平置中 */
+.section-flex {
+	display: flex;
+	justify-content: center;
+	height: 500px;
+}
+
+.section-block {
+	width: 80%;
+	height: 300px;
+	/* 好看用 */
+	border: 5px solid #7B7B7B;
+	margin-top: 100px;
+}
+</style>
+
+<script type="text/javascript">
+	// 全域變數紀錄SQL指令下的次數
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var id = url.searchParams.get("id");
+	var sql_num = 0;
+
+	function getMember() {
+		$
+				.ajax({
+					type : "GET",
+					url : "api/Student.do",
+					crossDomain : true,
+					data : "Student_ID=" + id,
+					cache : false,
+					dataType : 'json',
+					timeout : 5000,
+					success : function(response) {
+						if (response.status == 200) {
+							//updateSQLTable(response.response);
+							document.getElementById('member_name').innerHTML += '<h2> &emsp;&emsp;&emsp;&emsp;'
+									+ response['response']['data'][0]['Student_name']
+									+ '</h2>';
+							//alert(response['response']['data'][0]['Student_name']);
+							//updateHTML(response.response.data);
+						}
+						console.log(response);
+					},
+					error : function() {
+						alert("無法連線到伺服器！");
+					}
+				});
+	}
+	getMember();
+
+	$(document).ready(function() {
+		// 處理表單點擊事件
+		var $memberEdit = $('#memberdata');
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var id = url.searchParams.get("id");
+		var sql_num = 0;
+		$memberEdit.click(function() {
+			//alert(id);
+			memberDataEdit();
+		});
+	});
+
+	function memberDataEdit() {
+		var table_html = '';
+		$.ajax({
+			type : "GET",
+			url : "api/Student.do",
+			crossDomain : true,
+			data : "Student_ID=" + id,
+			cache : false,
+			dataType : 'json',
+			timeout : 5000,
+			success : function(response) {
+				if (response.status == 200) {
+					$.each(response.response.data, function(index, value) {
+						if (id == value['Student_ID']) {
+							table_html = 'edit.html?id=' + value['Student_ID'];
+						}
+					})
+					window.location.href = table_html;
+					alert(data);
+				}
+				console.log(response);
+			},
+			error : function() {
+				alert("無法連線到伺服器！");
+			}
+		});
+	}
+</script>
+
+<style>
+#member a:link {
+    color: #000000;
+    text-decoration: none;
+}
+
+#member a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+#member a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+#member a:active {
+    color: #000000;
+    text-decoration: none;
+}
+</style>
+<footer class="text-muted">
+	<div class="container">
+		<p class="float-right">
+			<a href="#">Back to top</a>
+		</p>
+	</div>
+</footer> </hbody>
+
+</html>
